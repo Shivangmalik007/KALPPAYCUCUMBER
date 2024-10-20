@@ -6,7 +6,7 @@ Feature: Verify the transaction history feature
     Then the user should be redirected to the Appoverview Page
     When user clicks on DEMO from the applist
     Then it should redirects to the application home page
-    @regression
+    @sanity
    Scenario: Verify the transaction status filter
     When user clicks on transaction from side menu
     And select transaction filter as "Success"

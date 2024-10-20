@@ -47,7 +47,9 @@ public void it_should_display_transactions_only(String string) {
 public void it_should_display_transaction_table_and_contain_below_fileds(io.cucumber.datatable.DataTable dataTable) {
    List<String>heading=dataTable.asList();
    List<String>Actualheading=tp.gettableheading();
-   for(int i=0;i>heading.size();i++) {
+   System.out.println(Actualheading);
+   System.out.println(heading);
+   for(int i=0;i<heading.size();i++) {
 	   Assert.assertEquals(heading.get(i),Actualheading.get(i));
    }
 }

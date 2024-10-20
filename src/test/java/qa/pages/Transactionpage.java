@@ -27,7 +27,7 @@ WebElement transactionstatus;
 List<WebElement> alltransactionstatus;
 @FindBy(xpath="//div[@class='custom-select__menu-list css-qr46ko']/div[text()='Success']")
 WebElement filtervalue;
-@FindBy(xpath="//div[@class='custom-select__placeholder css-ai9vpl-placeholder']")
+@FindBy(xpath="//div[@class='custom-select__value-container css-hlgwow']")
 WebElement statusfilter;
 @FindBy(xpath="//th")
 List<WebElement>tableheading;
@@ -63,8 +63,8 @@ public List<String> getstatusofalltransaction(){
 	return orignalstatus;
 }
 public void Select_status_filter(String status) throws Throwable {
-	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
-	wait.until(ExpectedConditions.elementToBeClickable(statusfilter));
+	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
+	wait.until(ExpectedConditions.visibilityOf(statusfilter));
 	statusfilter.click();
 	WebElement statusvalue=driver.findElement(By.xpath("//div[@class='custom-select__menu-list css-qr46ko']/div[text()='"+status+"']"));
 	WebDriverWait wait1=new WebDriverWait(driver,Duration.ofSeconds(10));
@@ -74,11 +74,13 @@ public void Select_status_filter(String status) throws Throwable {
 }
 public void click_on_TransactionHistory() {
 	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
-	wait.until(ExpectedConditions.visibilityOf(transactionsidemenu));
+	wait.until(ExpectedConditions.elementToBeClickable(transactionsidemenu));
 	transactionsidemenu.click();
 }
 public List<String> gettableheading(){
 	List<String> heading=new ArrayList<>();
+	WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
+	wait.until(ExpectedConditions.visibilityOfAllElements(tableheading));
 	for(WebElement actualheading:tableheading) {
 		heading.add(actualheading.getText());
 	}
